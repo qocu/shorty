@@ -12,3 +12,9 @@ dev = [
     "django-stubs>=6.1.2",
     "ruff>=0.17.3",
 ]
+
+[tool.basedpyright]
+typeCheckingMode = "standard"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP", "B"]

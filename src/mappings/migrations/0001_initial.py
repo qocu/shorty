@@ -4,22 +4,37 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='URLMapping',
+            name="URLMapping",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('url', models.URLField()),
-                ('short', models.CharField(blank=True, db_index=True, editable=False, max_length=8, unique=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("url", models.URLField()),
+                (
+                    "short",
+                    models.CharField(
+                        blank=True,
+                        db_index=True,
+                        editable=False,
+                        max_length=8,
+                        unique=True,
+                    ),
+                ),
             ],
             options={
-                'ordering': ('-pk',),
+                "ordering": ("-pk",),
             },
         ),
     ]

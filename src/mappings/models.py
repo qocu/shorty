@@ -3,19 +3,16 @@ import string
 
 from django.db import models, transaction
 
-__all__ = ("URLMapping",)
+__all__ = ["URLMapping"]
+
 
 class URLMapping(models.Model):
     class Meta:
-        ordering = ('-pk',)
+        ordering = ("-pk",)
 
     url = models.URLField()
     short = models.CharField(
-        max_length=8,
-        unique=True,
-        db_index=True,
-        blank=True,
-        editable=False
+        max_length=8, unique=True, db_index=True, blank=True, editable=False
     )
 
     def __str__(self):
