@@ -13,12 +13,12 @@ class URLMappingAPIView(APIView):
     serializer_class = URLMappingSerializer
     queryset = URLMapping.objects.all()
 
-    def get(self, request, short):
+    def get(self, request, short) -> Response:
         mapping = get_object_or_404(self.queryset, short=short)
         serializer = self.serializer_class(mapping)
         return Response(serializer.data)
 
-    def post(self, request):
+    def post(self, request) -> Response:
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             serializer.save()
