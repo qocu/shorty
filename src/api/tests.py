@@ -3,6 +3,7 @@ from rest_framework.test import APIClient
 
 from mappings.models import URLMapping
 
+TEST_URL = "https://www.example.com"
 
 class URLMappingAPITest(TestCase):
     def setUp(self):
@@ -12,7 +13,7 @@ class URLMappingAPITest(TestCase):
         """Prosty test tworzenia mapowania URL"""
 
         response = self.client.post(
-            "/api/", data={"url": "https://example.com"}, format="json"
+            "/api/", data={"url": TEST_URL}, format="json"
         )
 
         self.assertEqual(response.status_code, 201)
@@ -22,7 +23,7 @@ class URLMappingAPITest(TestCase):
         """Prosty test pobierania mapowania URL po utworzeniu"""
 
         response = self.client.post(
-            "/api/", data={"url": "https://example.com"}, format="json"
+            "/api/", data={"url": TEST_URL}, format="json"
         )
 
         self.assertEqual(response.status_code, 201)
@@ -30,7 +31,7 @@ class URLMappingAPITest(TestCase):
         response2 = self.client.get(f"/api/{response.json()['short']}/", format="json")
 
         self.assertEqual(response2.status_code, 200)
-        self.assertEqual(response2.json()["url"], "https://example.com")
+        self.assertEqual(response2.json()["url"], TEST_URL)
 
     def test_invalid_url(self):
         """Test nieprawidłowego URL"""

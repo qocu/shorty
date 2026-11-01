@@ -3,19 +3,20 @@ from django.core.exceptions import ValidationError
 
 from .models import URLMapping
 
+TEST_URL = "https://www.example.com"
 
 class URLMappingTests(TestCase):
     def test_create_urlmapping_unique(self):
         """Testuje unikalność shortu"""
 
         # Utworzenie pierwszej instancji
-        urlmapping = URLMapping.objects.create(url="https://www.example.com")
+        urlmapping = URLMapping.objects.create(url=TEST_URL)
 
         self.assertIsNotNone(urlmapping.short)
         self.assertRegex(urlmapping.short, r"^[a-zA-Z]{8}$")
 
         # Utworzenie drugiej instancji z tym samym URL
-        urlmapping2 = URLMapping.objects.create(url="https://www.example.com")
+        urlmapping2 = URLMapping.objects.create(url=TEST_URL)
 
         self.assertIsNotNone(urlmapping2.short)
         self.assertRegex(urlmapping2.short, r"^[a-zA-Z]{8}$")
@@ -24,7 +25,7 @@ class URLMappingTests(TestCase):
     def test_create_remove_urlmapping(self):
         """Testuje tworzenie i usuwanie URLMapping."""
 
-        urlmapping = URLMapping.objects.create(url="https://www.example.com")
+        urlmapping = URLMapping.objects.create(url=TEST_URL)
 
         self.assertIsNotNone(urlmapping.short)
         self.assertRegex(urlmapping.short, r"^[a-zA-Z]{8}$")
