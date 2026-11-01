@@ -1,6 +1,27 @@
 # Shorty
 
-## Obsługa ręczna
+## Struktura 
+
+`config` - konfiguracja Django
+`config/settings/` - ustawienia dla dev/prod
+`mappings` - modele skracania URL
+`api` - interfejs API
+
+## Instalacja 
+
+```bash
+uv sync --dev
+uv run src/manage.py migrate
+uv run src/manage.py runserver
+```
+
+Dla zmiany domyślnych ustawień lub ustawień produkcji
+
+```bash
+cp .env.example .env
+```
+
+## Obsługa ręczna API
 
 Dla URL `http://localhost`
 
@@ -16,8 +37,8 @@ curl -i -X POST http://localhost:8000/api/ \
 
 Pobieranie skróconego URL
 
-Dla pobrania skrócenego URL `shrt`
+Dla pobrania skrócenego URL `shrtshrt`
 
 ```bash
-curl -i -X GET http://localhost:8000/api/shrt/
+curl -i -X GET http://localhost:8000/api/shrtshrt/
 ```
