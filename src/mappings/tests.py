@@ -5,6 +5,7 @@ from .models import URLMapping
 
 TEST_URL = "https://www.example.com"
 
+
 class URLMappingTests(TestCase):
     def test_create_urlmapping_unique(self):
         """Testuje unikalność shortu"""

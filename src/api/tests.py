@@ -5,6 +5,7 @@ from mappings.models import URLMapping
 
 TEST_URL = "https://www.example.com"
 
+
 class URLMappingAPITest(TestCase):
     def setUp(self):
         self.client = APIClient()
@@ -12,9 +13,7 @@ class URLMappingAPITest(TestCase):
     def test_create_url_mapping(self):
         """Prosty test tworzenia mapowania URL"""
 
-        response = self.client.post(
-            "/api/", data={"url": TEST_URL}, format="json"
-        )
+        response = self.client.post("/api/", data={"url": TEST_URL}, format="json")
 
         self.assertEqual(response.status_code, 201)
         self.assertRegex(response.json()["short"], r"^[a-zA-Z]{8}$")
@@ -22,9 +21,7 @@ class URLMappingAPITest(TestCase):
     def test_get_url_mapping(self):
         """Prosty test pobierania mapowania URL po utworzeniu"""
 
-        response = self.client.post(
-            "/api/", data={"url": TEST_URL}, format="json"
-        )
+        response = self.client.post("/api/", data={"url": TEST_URL}, format="json")
 
         self.assertEqual(response.status_code, 201)
 
