@@ -31,8 +31,9 @@ class URLMapping(models.Model):
     @transaction.atomic()
     def save(self, *args, **kwargs) -> None:
         """Nadaje pierwszy wolny unikalny short."""
-        while not self.short and not self.short_exists(self.short):
-            self.short = URLMapping.get_short()
+        if not self.pk:
+            while not self.short or self.short_exists(self.short):
+                self.short = URLMapping.get_short()
 
         # Walidacja URL
         self.full_clean()
