@@ -9,22 +9,22 @@
 
 ## Instalacja 
 
-```bash
-uv sync --dev
-uv run src/manage.py migrate
-uv run src/manage.py runserver
-```
-
-Dla zmiany domyślnych ustawień lub ustawień produkcji
-
+Konfiguracja środowiska
 ```bash
 cp .env.example .env
+```
+
+Uruchomienie
+```bash
+uv sync --dev
+uv run --env-file .env src/manage.py migrate
+uv run --env-file .env src/manage.py runserver
 ```
 
 ## Testowanie 
 
 ```bash
-uv run src/manage.py test src
+uv run --env-file .env src/manage.py test src
 ```
 
 ## Obsługa ręczna API
