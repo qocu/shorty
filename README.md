@@ -21,6 +21,12 @@ Dla zmiany domyślnych ustawień lub ustawień produkcji
 cp .env.example .env
 ```
 
+## Testowanie 
+
+```bash
+uv run src/manage.py test src
+```
+
 ## Obsługa ręczna API
 
 Dla URL `http://localhost`
