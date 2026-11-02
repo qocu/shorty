@@ -54,3 +54,17 @@ class URLMappingAPITest(TestCase):
         response = self.client.get("/api/kkkkkkkk/", format="json")
 
         self.assertEqual(response.status_code, 404)
+
+    def test_post_with_short(self):
+        """Test tworzenia mapowania URL z podanym short"""
+
+        response = self.client.post("/api/kkkkkkkk/", data={"url": TEST_URL}, format="json")
+
+        self.assertEqual(response.status_code, 405)
+
+    def test_get_without_short(self):
+        """Test pobierania mapowania URL bez short"""
+
+        response = self.client.get("/api/", format="json")
+
+        self.assertEqual(response.status_code, 405)
