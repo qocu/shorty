@@ -5,6 +5,8 @@ __all__ = ["URLMappingSerializer"]
 
 
 class URLMappingSerializer(serializers.ModelSerializer):
+    short = serializers.ReadOnlyField()
+
     class Meta:
         model = URLMapping
         fields = (

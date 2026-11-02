@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import URLMappingAPIView
+from .views import URLMappingCreateAPIView, URLMappingRetrieveAPIView
 
 urlpatterns = [
-    path("", URLMappingAPIView.as_view(), name="url-mapping"),
-    path("<str:short>/", URLMappingAPIView.as_view(), name="url-mapping"),
+    path("", URLMappingCreateAPIView.as_view(), name="url-mapping"),
+    path("<str:short>/", URLMappingRetrieveAPIView.as_view(), name="url-mapping"),
 ]
